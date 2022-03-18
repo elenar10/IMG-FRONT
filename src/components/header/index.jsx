@@ -2,25 +2,25 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import './style.css'
+import './style.css';
 import Logo from './assets/favoredit.png';
+import BasicPopover from '../formAddFavorites';
 
 
 function Header() {
+
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+
   const handleMenu = (event) => {
+    console.log("handleMenu", event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
-  const handleEditor = () => {
-    console.log("go to edit page");
-  };
-
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -39,10 +39,9 @@ function Header() {
       flexWrap: "nowrap",
       alignContent: "center",
       justifyContent: "space-around",
-      alignItems: "center", 
-      boxShadow: "none"}}>
+      alignItems: "center"}}>
       
-      <AppBar position="static" color="transparent" >
+      <AppBar position="static" color="transparent" sx={{ boxShadow: "none"}} >
         <Toolbar sx={{justifyContent:"space-between", alignItems:"center"}}>
         <img
           className="logo"
@@ -50,17 +49,10 @@ function Header() {
           alt="logo"
         />
          
-         <Box>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleEditor}
-                color="inherit"
-              >
-                <AddPhotoAlternateIcon />
-              </IconButton>
+         <Box >
+              
+    
+          <BasicPopover /> 
             
               <IconButton
                 size="large"
