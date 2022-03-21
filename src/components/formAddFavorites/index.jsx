@@ -1,17 +1,51 @@
 import * as React from "react";
 import './style.css';
 import Popover from "@mui/material/Popover";
-import { Button, InputBase } from "@mui/material";
+import { Button, Input } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import IconButton from '@mui/material/IconButton';
+import { useState } from 'react';
+// import { useEffect } from "react";
 
 function BasicPopover () {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [errorMessage, updateErrorMessage] = useState('');
+  const [error, setError] = useState(false);
+ 
 
-const handleSend = (e) => {
+const handleSubmit = (e) => {
     e.preventDefault();
+    const valueInputImg = e.currentTarget.imagen.value;
+    const url = new URL (valueInputImg)
+    const imgFileName = url.pathname.lastIndexOf('/');
+    const img = e.currentTarget.imagen.value.slice(imgFileName)
+    const formData = new FormData(e.currentTarget)
+    formData.append("img", img)
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+    fetch("http://localhost:4030/favorites", options)
+          .then(r => {
+            r.status === 201 ? setError(false) : setError(true);
+            const response = r.json()
+            console.log(response)
+            // response.acknowledged === true ? updateErrorMessage('No se ha completado la carga de datos, revisa el tamaño de la imagen y que los datos introducidos sean correctos'): updateErrorMessage('La imagen se ha cargado correctamente')
+          });
+          // .then(d => {
+          //   console.log(d)
+          //   d !== 200 ? updateErrorMessage('No se ha completado la carga de datos, revisa el tamaño de la imagen y que los datos introducidos sean correctos'): updateErrorMessage('La imagen se ha cargado correctamente')
+          // });
+  
+
+    
 }
+// useEffect(() => {
+//   errorMessage === true ? updateErrorMessage('No se ha completado la carga de datos, revisa el tamaño de la imagen y que los datos introducidos sean correctos'): updateErrorMessage('La imagen se ha cargado correctamente')
+
+// }, []);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -25,6 +59,7 @@ const handleSend = (e) => {
 
   return (
     <React.Fragment>
+      
         <IconButton
                 size="large"
                 aria-label="add new images"
@@ -46,41 +81,41 @@ const handleSend = (e) => {
           vertical: "bottom",
           horizontal: "left"
         }}
-        sx={{width: "400px", height: "auto", flexDirection: "column",
-        flexWrap: "wrap",
+        sx={{ ".MuiPopover-paper":{minWidth: "250px", height: "auto", display: "flex", flexWrap: "wrap",
         alignContent: "center",
         justifyContent: "center",
-        alignItems: "center" }}
-        className='paper__form'
+        alignItems: "center", flexDirection: "column" },
+         
+      }}
+     
       >
-          {/* <Box
-    
-          sx={{
-            "& .MuiTextField-root": { m: 1, flexDirection: "column",
-            flexWrap: "wrap",
-            alignContent: "center",
-            justifyContent: "center",
-            alignItems: "center"  }
-          }}
-          noValidate
-          autoComplete="off"
-        > */}
-          <form id="create-course-form" onSubmit={handleSend} className='form__favorites'>
+         
+          <form id="create-course-form" onSubmit={handleSubmit} className='form__favorites'>
         
         
             <TextField
               required
-              id="outlined-required"
+              id="name"
+              name="name"
               label="Required"
-              defaultValue="Nombre"
+              defaultValue="Nombre de la imagen"
+
             />
-            <InputBase type="file"  name="imagen" accept="image/jpep, image/png" required margin="normal"/>
+            <TextField
+              required
+              id="email"
+              name="email"
+              label="Required"
+              defaultValue="Email"
+            />
+            <Input type="file" id="imagen" name="imagen" accept="image/*" required  margin="dense"/>
+            {/* <Typography color='red'>{errorMessage}</Typography> */}
             <Button 
             // disabled={inputValue === '' ? true : false}
                   variant='contained' type='submit' color='error'>Añadir</Button>
    
           </form>
-        {/* </Box> */}
+         
       </Popover>
       </React.Fragment>
   );

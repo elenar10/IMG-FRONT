@@ -3,3 +3,10 @@
     height: auto;
     /* margin-top: 50px; */
 }
+
+.ventana__popover{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
