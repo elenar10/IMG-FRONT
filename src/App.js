@@ -3,10 +3,10 @@ import './App.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Header from './components/header';
 // import Landing from './pages/landing';
-// import Home from './pages/home';
+import Home from './pages/home';
 import Edit from './pages/edit';
-// import SignFom from './pages/signForm';
-// import Login from './pages/login';
+import SignFom from './pages/signForm';
+import Login from './pages/login';
 
 function App() {
   return (
@@ -15,12 +15,12 @@ function App() {
     <Header></Header>
     
     <Switch>
-      {/* <Route path="/signForm">
+      <Route path="/signForm">
         <SignFom></SignFom>
       </Route>
       <Route path="/login">
       <Login></Login>
-      </Route> */}
+      </Route>
      
       <Route path="/edit/:id">
         <Edit></Edit>
@@ -28,9 +28,9 @@ function App() {
       {/* <Route path="/landing">
         <Landing></Landing>
       </Route> */}
-      {/* <Route path="/">
+      <Route path="/">
         <Home></Home>
-      </Route> */}
+      </Route>
     </Switch>
     </div>
     </BrowserRouter>

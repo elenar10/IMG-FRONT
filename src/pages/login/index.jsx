@@ -20,7 +20,7 @@ import { makeStyles } from "@mui/styles";
 import  VisibilityOff  from "@mui/icons-material/VisibilityOff";
 import  Visibility from "@mui/icons-material/Visibility";
 import { useHistory } from "react-router";
-import { useTranslation } from "react-i18next";
+
 import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
 
@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
   const history = useHistory();
 
-  const [t] = useTranslation("global");
 
   const [values, setValues] = React.useState({
     email: "",
@@ -130,7 +129,7 @@ function Login() {
     >
       <Stack sx={{ alignItems: "center", paddingTop: "30px", gap:"20px" }}>
         <Avatar></Avatar>
-        <Typography component="h5">{t("signForm.login")}</Typography>
+        <Typography component="h5">Login</Typography>
       </Stack>
 
       <form className={classes.form} onSubmit={handleSubmit} id="formulario">
@@ -139,7 +138,7 @@ function Login() {
           id="email"
           name="email"
           type="email"
-          label={t("signForm.email")}
+          label="Introduce tu email"
           autoFocus
           margin="normal"
           variant="standard"
@@ -150,7 +149,7 @@ function Login() {
 
         <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
           <InputLabel htmlFor="standard-adornment-password 2">
-            {t("signForm.password")}
+            Introduce tu contraseña
           </InputLabel>
           <Input
             id="standard-adornment-password 2"
@@ -177,7 +176,7 @@ function Login() {
             }
           />
           <FormHelperText id="my-helper-text-password">
-            {t("signForm.helper")}
+          Entre 6 y 8 caracteres
           </FormHelperText>
         </FormControl>
         {/* <FormControlLabel
@@ -185,16 +184,16 @@ function Login() {
           label={t("signForm.remember")}
         ></FormControlLabel> */}
         <Button variant="outlined" type="submit" form="formulario">
-          {t("signForm.enviar")}
+          Enviar
         </Button>
         <Typography>
-          <Link href="#">{t("signForm.olvido")}</Link>
+          <Link href="#">Recuperar contraseña</Link>
         </Typography>
         <Typography>
-        {t("signForm.tienesCuenta")}
+        ¿Tienes una cuenta?
        
           <Link to="/signForm">
-          {t("signForm.registarte")}
+          Regístrate
           </Link>
         </Typography>
       </form>
