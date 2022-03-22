@@ -4,7 +4,7 @@ import './App.css';
 import {BrowserRouter} from 'react-router-dom';
 import Header from './components/header';
 // import Landing from './pages/landing';
-// import Home from './pages/home';
+import Home from './pages/home';
 // import Edit from './pages/edit';
 
 
@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
     <div className="App">
     <Header></Header>
+    <Home></Home>
     {/* <Switch>
       <Route path="/signForm">
         <SignFom></SignFom>
