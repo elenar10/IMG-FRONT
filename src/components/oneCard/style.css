@@ -2,3 +2,11 @@
     width: 700px;
     height: 300px;
 }
+
+.image_card:hover{
+    transform: scale(2);
+}
+
+/* .cardFavorite:hover{
+    transform: scale(2);
+} */
