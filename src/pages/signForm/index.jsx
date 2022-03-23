@@ -116,7 +116,7 @@ function SignFom() {
       className={classes.container}
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
-        display: 'flex', flexWrap:'wrap', flexDirection:'column', gap: '20px', alignContent:'center', paddingBottom: '35px'
+        display: 'flex', flexWrap:'wrap', flexDirection:'column', gap: '20px', alignContent:'center', paddingBottom: '50px', paddingTop: '50px'
       }}
       // noValidate
       // autoComplete="off"
@@ -141,7 +141,7 @@ function SignFom() {
         />
 
         <FormControl sx={{ m: 1, width: "25ch" }} variant="standard">
-          <InputLabel htmlFor="standard-adornment-password">{t("signForm.password")}
+          <InputLabel htmlFor="standard-adornment-password">Contraseña
           </InputLabel>
           <Input
             id="standard-adornment-password"

@@ -9,10 +9,10 @@ import Menu from '@mui/material/Menu';
 import './style.css';
 import Logo from './assets/favoredit.png';
 import BasicPopover from '../formAddFavorites';
-
+import { useHistory } from "react-router";
 
 function Header() {
-
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
 
@@ -25,15 +25,16 @@ function Header() {
     setAnchorEl(null);
   };
   const handleLogin = () => {
-    console.log('url')
-    // const url = "http://localhost:3000/login";
-    // window.open(url);
+    history.push('/login')
+    
   };
   const handleSignIn = () => {
-    console.log('url')
-    // const url = "http://localhost:3000/login";
-    // window.open(url);
+    history.push('/signForm')
+   
   };
+  const handleGoHome =() => {
+    history.push('/')
+  }
   return (
     <Box sx={{flexDirection: "row",
       flexWrap: "nowrap",
@@ -47,6 +48,7 @@ function Header() {
           className="logo"
           src={Logo}
           alt="logo"
+          onClick={handleGoHome}
         />
          
          <Box >
