@@ -9,24 +9,35 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Stack } from '@mui/material';
 import { useHistory } from "react-router";
-// import { useState, useContext } from 'react';
+// import { useState } from 'react';
 
 
 export default function OneCard(props) {
   const history = useHistory();
-  // const [cards, setCards] = useState([]);
-  // const [favorite, setFavoriteStorage] = useContext(FavoriteContext);
 
+const id = props.id
 const handleClickEdit = () =>{
   history.push(`/edit/${props.id}`)
  
 }
-const handleFocus = (e) =>{
-  console.log(e)
-  
- 
-}
-   
+const handleDelete = () => {
+    const options = {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json", 
+         
+        },
+        body: JSON.stringify({id})
+      };
+      console.log('options', options)
+      fetch('http://localhost:4030/favorites', options)
+      .then(r=>r.json())
+      .then(d=> {
+        
+        console.log('d', d)})
+      };
+      
+     
   
 
   return (
@@ -45,9 +56,7 @@ const handleFocus = (e) =>{
         image={`http://localhost:4030/public/${props.imagen}`}
         className="image_card"
         alt={props.titulo}
-        // onClick={() => <Link to={`/details/${props.id}`}></Link> }
-        onClick={handleFocus}
-        // onSelect={(e)=> console.log('sekecuiba')}
+        // onClick={handleFocus}
       />
 
       <CardContent
@@ -69,7 +78,7 @@ const handleFocus = (e) =>{
         <IconButton aria-label="edit" onClick={handleClickEdit}>
           <EditIcon />
         </IconButton>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       </Stack>
