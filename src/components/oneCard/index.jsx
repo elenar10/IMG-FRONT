@@ -34,7 +34,7 @@ const handleDelete = () => {
       .then(r=>r.json())
       .then(d=> {
         
-        console.log('d', d)})
+        console.log('data', d)})
       };
       
      
