@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import Slider from '../../components/slider';
 import SidebarItem from '../../components/sidebarItem';
 import './styles.css';
+import { Button } from "@mui/material";
+
 
 const DEFAULT_OPTIONS = [
     {
@@ -84,7 +86,9 @@ function Edit(){
     const [card, setCard] = useState('');
     const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
     const [options, setOptions] = useState(DEFAULT_OPTIONS);
+
     const selectedOption = options[selectedOptionIndex];
+
     let { id } = useParams();
 
     useEffect(()=>{
@@ -110,6 +114,9 @@ function Edit(){
             return `${option.property}(${option.value}${option.unit})`
         } )
         return{filter:filters.join(' ')}
+    }
+    function handleSave (){
+     
     }
 
     return (
@@ -150,6 +157,7 @@ function Edit(){
           value={selectedOption.value}
           handleChange={handleSliderChange}
         />
+        <Button onClick={handleSave}></Button>
       </Box>
     );
 }

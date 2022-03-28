@@ -23,7 +23,7 @@ function Home() {
     <Box component='section' >
     <Box sx={{ display: 'flex', flexWrap:'wrap', flexDirection:'row', justifyContent:'center', gap: '20px', alignContent:'center', pb:'4em'}} >
  
-    {cards.map((c)=>  <OneCard titulo={c.name} key={c._id} id={c._id} type={c.type} email= {c.email} imagen={c.img}></OneCard>)}
+    {cards.map((c)=>  <OneCard titulo={c.name} key={c._id} id={c._id} info={c.info} type={c.type} email= {c.email} imagen={c.img}></OneCard>)}
 
     
 </Box>

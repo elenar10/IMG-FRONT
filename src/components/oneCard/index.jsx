@@ -15,30 +15,26 @@ import { useHistory } from "react-router";
 export default function OneCard(props) {
   const history = useHistory();
 
-const id = props.id
-const handleClickEdit = () =>{
-  history.push(`/edit/${props.id}`)
- 
-}
-const handleDelete = () => {
+  const id = props.id;
+
+  const handleClickEdit = () => {
+    history.push(`/edit/${props.id}`);
+  };
+  const handleDelete = () => {
     const options = {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json", 
-         
-        },
-        body: JSON.stringify({id})
-      };
-      console.log('options', options)
-      fetch('http://localhost:4030/favorites', options)
-      .then(r=>r.json())
-      .then(d=> {
-        
-        console.log('data', d)})
-      };
-      
-     
-  
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    };
+    fetch("http://localhost:4030/favorites", options)
+      .then((r) => r.json())
+      .then((d) => {
+        console.log("data", d);
+      });
+    window.location.reload();
+  };
 
   return (
     <Card
@@ -70,8 +66,7 @@ const handleDelete = () => {
           {props.titulo}
         </Typography>
         <Typography variant="p" color="text.secondary">
-          Usuario:
-          {props.email}
+          {props.info}
         </Typography>
       </CardContent>
       <Stack direction="raw" justifyContent="flex-end">

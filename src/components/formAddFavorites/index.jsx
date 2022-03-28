@@ -44,10 +44,7 @@ function BasicPopover() {
 
     // }, []);
   };
-  // useEffect(() => {
-  //   errorMessage === true ? updateErrorMessage('No se ha completado la carga de datos, revisa el tamaño de la imagen y que los datos introducidos sean correctos'): updateErrorMessage('La imagen se ha cargado correctamente')
 
-  // }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -105,15 +102,14 @@ function BasicPopover() {
             required
             id="name"
             name="name"
-            label="Required"
-            defaultValue="Nombre de la imagen"
+            label="Nombre de la imagen"
+            defaultValue="Título"
           />
           <TextField
-            required
-            id="email"
-            name="email"
-            label="Required"
-            defaultValue="Email"
+            id="info"
+            name="info"
+            label="Descripción"
+            defaultValue="Descripción"
           />
           <Input
             type="file"
