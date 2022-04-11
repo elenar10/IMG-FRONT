@@ -11,7 +11,7 @@ function Home() {
  
     useEffect(()=>{
         const getCards = async () => {
-            const res = await fetch('http://localhost:4030/favorites/all');
+            const res = await fetch('http://localhost:4015/favorites/all');
             const data = await res.json();
             return setCards(data);
            

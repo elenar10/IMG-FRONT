@@ -94,7 +94,7 @@ function SignFom() {
         };
     
         // llamo al registro
-        fetch("http://localhost:4030/auth/register", options)
+        fetch("http://localhost:4015/auth/register", options)
           .then((r) => r.json())
           .then((d) => console.log(d)); 
       } else {

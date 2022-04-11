@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Slider from '../../components/slider';
 import SidebarItem from '../../components/sidebarItem';
 import './styles.css';
-import { Button } from "@mui/material";
+import { Input } from "@mui/material";
 
 
 const DEFAULT_OPTIONS = [
@@ -93,7 +93,7 @@ function Edit(){
 
     useEffect(()=>{
         const getOneCard = async () => {
-            const res = await fetch(`http://localhost:4030/favorites/edit/${id}`);
+            const res = await fetch(`http://localhost:4015/favorites/edit/${id}`);
             const data = await res.json();
             return setCard(data);
         }
@@ -135,6 +135,7 @@ function Edit(){
                 alt={c.img}
                 key={c._id}
               />
+            
             </Box>
           ))
         )}
@@ -157,7 +158,9 @@ function Edit(){
           value={selectedOption.value}
           handleChange={handleSliderChange}
         />
-        <Button onClick={handleSave}></Button>
+        {/* <a href={URL(`http://localhost:4030/public/${c.img}`)} download="" > */}
+          <Input type="submit" onClick={handleSave}>Guardar</Input>
+          {/* </a> */}
       </Box>
     );
 }
